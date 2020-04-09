@@ -10,9 +10,9 @@ int array[5]={0};
 func(array,5);
     }
 
-2、二维数组传递（重点）：分二级指针传递和数组名传递两种
-（1）当实参数组变量是二级指针变量时（通过两个malloc生成二维数组），
-    形参数组变量也必须是二级指针（是**arr对，arr[][Size]就会报错），如下所示：
+    2、二维数组传递（重点）：分二级指针传递和数组名传递两种
+  （1）当实参数组变量是二级指针变量时（通过两个malloc生成二维数组），
+       形参数组变量也必须是二级指针（是**arr对，arr[][Size]就会报错），如下所示：
 正确形式如下：
 change(int** arr)
 {
@@ -22,10 +22,10 @@ int main()
 {
 	int** array;
 	array = (int **)malloc(sizeof(int *) * 10); // 分配所有行的首地址
-	for (int i = 0; i < 3; i++) { // 按行分配每一列
+	for (int i = 0; i < 10; i++) { // 按行分配每一列
 		array[i] = (int *)malloc(sizeof(int) * 10);
 	}
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++)
 			array[i][j] = 0;
 	change(array);
@@ -41,17 +41,17 @@ int main()
 {
 	int** array;
 	array = (int **)malloc(sizeof(int *) * 10); // 分配所有行的首地址
-	for (int i = 0; i < 3; i++) { // 按行分配每一列
+	for (int i = 0; i < 10; i++) { // 按行分配每一列
 		array[i] = (int *)malloc(sizeof(int) * 10);
 	}
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++)
 			array[i][j] = 0;
 	change(array);
 	printf("%d", array[0][1]);
 
     
-（2）当实参是二维数组名时，形参既可以是二级指针变量(**arr)，也可以是指定列长的数组名（int arr[][length])
+    （2）当实参是二维数组名时，形参既可以是二级指针变量(**arr)，也可以是指定列长的数组名（int arr[][length])
 以下两种形式都正确：
 change(int** arr)
 {
@@ -60,7 +60,7 @@ change(int** arr)
 }
 int main()
 {
-	int array[3][3] = { 0 };
+	int array[10][10] = { 0 };
 	change(array);
 	printf("%d", array[0][1]);
 
@@ -71,7 +71,7 @@ change(int arr[][10])
 }
 int main()
 {
-	int array[3][3] = { 0 };
+	int array[10][10] = { 0 };
 	change(array);
 	printf("%d", array[0][1]);
 

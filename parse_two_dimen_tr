@@ -30,6 +30,7 @@ int main()
 			array[i][j] = 0;
 	change(array);
 	printf("%d", array[0][1]);
+}
 
 
 错误形式如下：这种情况下，array数组的值，并没有传递给arr。
@@ -49,6 +50,7 @@ int main()
 			array[i][j] = 0;
 	change(array);
 	printf("%d", array[0][1]);
+}
 
     
     （2）当实参是二维数组名时，形参既可以是二级指针变量(**arr)，也可以是指定列长的数组名（int arr[][length])
@@ -74,5 +76,6 @@ int main()
 	int array[10][10] = { 0 };
 	change(array);
 	printf("%d", array[0][1]);
+}
 
 友情提示：同一级函数下，指针变量*（p+1）的形式都可以随意转化为p[1],同理*((int *)p+n*i+j)即表示p[i][j]，n表示列的大小。
